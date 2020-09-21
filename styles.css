@@ -16,6 +16,10 @@ body {
   background-color: #60aaf0;
 }
 
+.main-img {
+  background-color: tomato;
+}
+
 .container {
   max-width: 1200px;
   padding: 20px;
@@ -31,7 +35,6 @@ body {
 
 .info-item {
   position: relative;
-  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,7 +49,8 @@ body {
   cursor: pointer;
 }
 
-.info-item:hover .about-film {
+.info-item img:hover ~ .about-film,
+.about-film:hover {
   transform: scale(1);
 }
 
@@ -110,4 +114,26 @@ body {
   display: block;
   width: 200px;
   height: 310px;
+}
+
+.main-img::before {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(204, 204, 204, 0.5);
+  display: none;
+}
+
+.info-item:hover .main-img::before {
+  display: block;
+}
+
+@media only screen and (max-width: 701px) {
+  body {
+    background-color: #fff;
+  }
 }
